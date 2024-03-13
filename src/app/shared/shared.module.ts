@@ -84,7 +84,7 @@ import { VirtualScrollerModule } from 'primeng/virtualscroller';
 
 
 // PrimeNG Components for examples
-import { DashboardDemoComponent } from './pages/dashboard/dashboard.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ErrorComponent } from './pages/error/error.component';
 import { NotfoundComponent } from './pages/not-found/not-found.component';
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
@@ -108,7 +108,7 @@ import { MessageService } from 'primeng/api';
     TopBarComponent,
     FooterComponent,
     BreadcrumbComponent,
-    DashboardDemoComponent,
+    DashboardComponent,
     NotfoundComponent,
     ErrorComponent,
     LoadingComponent,
@@ -202,7 +202,7 @@ import { MessageService } from 'primeng/api';
     TopBarComponent,
     FooterComponent,
     BreadcrumbComponent,
-    DashboardDemoComponent,
+    DashboardComponent,
     NotfoundComponent,
     ErrorComponent,
     AccordionModule,

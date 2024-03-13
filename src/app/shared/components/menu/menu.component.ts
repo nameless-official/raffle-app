@@ -19,7 +19,9 @@ export class MenuComponent implements OnInit {
       {
         label: 'Páginas', icon: 'pi pi-fw pi-copy', routerLink: ['/pages'],
         items: [
-          
+          {
+            label: 'Sorteos', icon: 'pi pi-fw pi-th-large', routerLink: ['/raffle/raffles'],
+          },
         ]
       },
     ];

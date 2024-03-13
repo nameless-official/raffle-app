@@ -4,19 +4,24 @@ import { NotfoundComponent } from './shared/pages/not-found/not-found.component'
 import { ErrorComponent } from './shared/pages/error/error.component';
 import { isAuthenticatedGuard } from './auth/guards/is-authenticated.guard';
 import { isNotAuthenticatedGuard } from './auth/guards/is-not-authenticated.guard';
-import { AppComponent } from './app.component';
 import { MainComponent } from './main.component';
+import { DashboardComponent } from './shared/pages/dashboard/dashboard.component';
 
 const routes: Routes = [
 
   {
-    path: '', component: AppComponent,
+    path: '', component: MainComponent,
     children: [
-      { path: '', component: MainComponent, canActivate: [isAuthenticatedGuard] },
+      { path: '', component: DashboardComponent, canActivate: [isAuthenticatedGuard] },
       {
         path: 'auth',
         loadChildren: () => import('./auth/auth.module').then(module => module.AuthModule),
         canActivate: [isNotAuthenticatedGuard]
+      },
+      {
+        path: 'raffle',
+        loadChildren: () => import('./raffle/raffle.module').then(module => module.RaffleModule),
+        canActivate: [isAuthenticatedGuard]
       },
 
     ]
