@@ -1,0 +1,9 @@
+:host ::ng-deep {
+  .p-message {
+    margin-left: 0.25em;
+
+    button {
+      min-width: 2em;
+    }
+  }
+}

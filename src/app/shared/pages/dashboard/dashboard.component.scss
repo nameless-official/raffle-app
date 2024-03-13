@@ -1,0 +1,37 @@
+@media screen and (max-width: 960px) {
+  :host ::ng-deep .fc-header-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+
+    .fc-dayGridMonth-button {
+      margin-top: 1rem;
+    }
+    .fc-timeGridWeek-button {
+      margin-top: 1rem;
+    }
+    .fc-timeGridDay-button {
+      margin-top: 1rem;
+    }
+  }
+}
+
+:host ::ng-deep {
+  .fc.fc-theme-standard .fc-highlight {
+    color: #ffffff;
+    background: var(--fc-highlight-color, rgba(63, 81, 181, 0.12));
+  }
+
+  .chart-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Establece la propiedad "flex" en 1 para que ambos contenedores tengan la misma altura */
+  .chart-container .card {
+    flex: 1;
+  }
+
+  .bar-chart canvas {
+    height: 50vh;
+  }
+}

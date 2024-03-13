@@ -1,0 +1,193 @@
+<p-table
+  #dt
+  [value]="dataSource"
+  [columns]="configurations.cols"
+  responsiveLayout="scroll"
+  [rows]="configurations.numberShowRows"
+  [globalFilterFields]="configurations.filtersFields"
+  [paginator]="true"
+  [rowsPerPageOptions]="configurations.rowsPerPageOptions"
+  [showCurrentPageReport]="true"
+  currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} Registros"
+  [(selection)]="selectedRecords"
+  [selectionMode]="configurations.selectionMode || 'multiple'"
+  [rowHover]="true"
+  [dataKey]="configurations.recordKey"
+  [lazy]="true"
+  (onLazyLoad)="operationsData.loadData($event)"
+  [totalRecords]="configurations.totalRecords"
+  [resizableColumns]="configurations.resizableColumns || true"
+  [loading]="loading"
+>
+  <ng-template pTemplate="caption">
+    <div
+      class="flex flex-column md:flex-row md:justify-content-between md:align-items-center"
+    >
+      <h5 class="m-0">{{ this.configurations.title }}</h5>
+      <div class="flex gap-1">
+        <button
+          *ngIf="
+            configurations.allowCreate === undefined
+              ? true
+              : configurations.allowCreate
+          "
+          pButton
+          pRipple
+          class="p-button-rounded"
+          icon="pi pi-plus"
+          pTooltip="Nuevo Registro"
+          (click)="operationsData.create()"
+        ></button>
+        <button
+          pButton
+          pRipple
+          class="p-button-rounded p-button-info"
+          icon="pi pi-sync"
+          pTooltip="Recargar Datos"
+          (click)="operationsData.refresh()"
+        ></button>
+        <button
+          *ngIf="configurations.batchDelete || false"
+          pButton
+          pRipple
+          class="p-button-rounded p-button-danger"
+          icon="pi pi-trash"
+          pTooltip="Eliminar registros seleccionados"
+          (click)="operationsData.onDeleteBatch(this.selectedRecords)"
+        ></button>
+        <span class="block mt-2 md:mt-0 p-input-icon-left">
+          <i class="pi pi-search"></i>
+          <input
+            pInputText
+            type="text"
+            (keyup.enter)="operationsData.onGlobalFilter(dt, $event)"
+            (keyup)="operationsData.onGlobalFilter(dt, $event)"
+            placeholder="Buscar..."
+            class="w-full sm:w-auto"
+          />
+        </span>
+      </div>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="header">
+    <tr>
+      <th
+        style="width: 3rem"
+        *ngIf="
+          configurations.batchDelete === undefined
+            ? true
+            : configurations.batchDelete
+        "
+      >
+        <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+      </th>
+      <th
+        style="width: 3rem"
+        *ngIf="
+          configurations.allowEditOrDelete === undefined
+            ? true
+            : configurations.allowEditOrDelete
+        "
+      >
+        Acciones
+      </th>
+      <th
+        [pSortableColumn]="
+          validateIsSortable(column.sortableColumn, column.field)
+        "
+        *ngFor="let column of configurations.cols"
+      >
+        {{ column.header }}
+        <p-sortIcon
+          *ngIf="
+            column.sortableColumn !== undefined ? column.sortableColumn : true
+          "
+          [field]="column.field"
+        ></p-sortIcon>
+      </th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-record>
+    <tr>
+      <td
+        *ngIf="
+          configurations.batchDelete === undefined
+            ? true
+            : configurations.batchDelete
+        "
+      >
+        <p-tableCheckbox [value]="record"></p-tableCheckbox>
+      </td>
+
+      <td>
+        <div class="flex">
+          <button
+            *ngIf="
+              configurations.allowEdit === undefined
+                ? true
+                : configurations.allowEdit
+            "
+            pButton
+            pRipple
+            pTooltip="Editar"
+            icon="pi pi-pencil"
+            class="p-button-rounded p-button-warning mr-2"
+            (click)="operationsData.update(record)"
+          ></button>
+          <button
+            *ngIf="
+              configurations.allowDelete === undefined
+                ? true
+                : configurations.allowDelete
+            "
+            pButton
+            pRipple
+            pTooltip="Eliminar"
+            icon="pi pi-trash"
+            class="p-button-rounded p-button-danger"
+            (click)="operationsData.delete(record)"
+          ></button>
+        </div>
+      </td>
+
+      <td *ngFor="let column of configurations.cols">
+        <span class="p-column-title">{{ column.header }}</span>
+
+        <!--  -->
+        <span *ngIf="getDataTypeColumn(column.dataType) === 'string'">{{
+          getFieldData(record, column.field)
+        }}</span>
+
+        <!--  -->
+        <span *ngIf="getDataTypeColumn(column.dataType) === 'number'">{{
+          getFieldData(record, column.field) | number : "1.2-2"
+        }}</span>
+
+        <!--  -->
+        <span *ngIf="getDataTypeColumn(column.dataType) === 'currency'">{{
+          getFieldData(record, column.field)
+            | currency : "GTQ" : "symbol" : "1.2-2"
+        }}</span>
+
+        <!--  -->
+        <span *ngIf="getDataTypeColumn(column.dataType) === 'boolean'"
+          ><i
+            class="pi"
+            [ngClass]="{
+              'text-green-500 pi-check-circle': getFieldData(
+                record,
+                column.field
+              ),
+              'text-red-500 pi-circle': !getFieldData(record, column.field)
+            }"
+          ></i>
+          {{
+            record[column.field]
+              ? column.trueText ?? ""
+              : column.falseText ?? ""
+          }}
+        </span>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>

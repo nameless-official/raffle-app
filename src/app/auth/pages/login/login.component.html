@@ -1,0 +1,57 @@
+<img src="assets/layout/images/DevTalles-logo.png" alt="Raffle Logo" />
+<p-toast
+  [breakpoints]="{ '920px': { width: '100%', right: '0', left: '0' } }"
+></p-toast>
+
+<h1><span>Inicio de Sesión</span> Raffle</h1>
+<p>Bienvenido, por favor ingrese sus datos de inicio de sesión</p>
+
+<form [formGroup]="formData" (ngSubmit)="login()">
+  <div class="login-input-wrapper">
+    <input
+      type="text"
+      autocomplete="off"
+      placeholder="Usuario"
+      pInputText
+      formControlName="username"
+    />
+    <i class="pi pi-user"></i>
+  </div>
+
+  <div class="login-input-wrapper">
+    <div class="login-input-wrapper m-0">
+      <input
+        #inputPassword
+        type="password"
+        autocomplete="off"
+        placeholder="Contraseña"
+        pInputText
+        formControlName="password"
+      />
+      <i class="pi pi-lock"></i>
+    </div>
+
+    <div>
+      <small *ngIf="verifyValidatedField('password')" class="p-error">{{
+        this.getMessageErrorByField("password")
+      }}</small>
+    </div>
+  </div>
+
+  <div class="login-input-wrapper">
+    <div class="flex flex-column">
+      <p-inputSwitch
+        id="showPassword"
+        (onChange)="onChangePasswordType($event)"
+      ></p-inputSwitch>
+      <label for="showPassword">Mostrar contraseña</label>
+    </div>
+  </div>
+
+  <button
+    type="submit"
+    pButton
+    label="Iniciar Sesión"
+    [disabled]="formData.invalid"
+  ></button>
+</form>
