@@ -1,0 +1,27 @@
+$loading-color: #673AB7;
+
+.loading-container {
+  position: fixed; /* Cambiado a fixed */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999; /* Asegura que esté por encima de otros elementos */
+}
+
+.loading-spinner {
+  border: 4px solid rgba($loading-color, 0.3);
+  border-radius: 50%;
+  border-top: 4px solid $loading-color;
+  width: 64px;
+  height: 64px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

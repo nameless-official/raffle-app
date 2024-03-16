@@ -9,7 +9,7 @@
             <p>{{ raffle.description }}</p>
             <p><strong>Fecha de inicio:</strong> {{ raffle.start_date }}</p>
             <p><strong>Fecha de fin:</strong> {{ raffle.end_date }}</p>
-            <a [routerLink]="['/raffle', raffle.raffle_id]">Ver detalles</a>
+            <a [routerLink]="['/raffles', raffle.slug]">Ver detalles</a>
         </div>
     </div>
 </div>

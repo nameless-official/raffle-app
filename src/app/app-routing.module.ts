@@ -15,10 +15,10 @@ const routes: Routes = [
   //   ]
   // },
   {
-    path: '', redirectTo: '/raffle', pathMatch: 'full'
+    path: '', redirectTo: '/raffles', pathMatch: 'full'
   },
   {
-    path: 'raffle',
+    path: 'raffles',
     loadChildren: () => import('./raffle/raffle.module').then(module => module.RaffleModule),
   },
   {

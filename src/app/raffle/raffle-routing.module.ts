@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { RaffleLayoutComponent } from './layout/raffle-layout/raflle-layout.component';
 import { RafflesComponent } from './pages/raffles/raffles.component';
+import { RaffleComponent } from './pages/raffle/raffle.component';
 
 const routes: Routes = [
   {
@@ -9,8 +10,13 @@ const routes: Routes = [
     component: RaffleLayoutComponent,
     children: [
       {
-        path: 'raffles',
-        component: RafflesComponent
+        path: '',
+        component: RafflesComponent,
+        pathMatch: 'full'
+      },
+      {
+        path: ':slug',
+        component: RaffleComponent
       },
       {
         path: '**',

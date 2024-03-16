@@ -31,12 +31,13 @@ export class AppComponent implements OnInit {
       case AuthStatus.checking:
         return
         break;
-      case AuthStatus.authenticated:
-        this.router.navigateByUrl('/')
-        break
-      case AuthStatus.notAuthenticated:
-        this.router.navigateByUrl('raffle/raffles')
-        break
+      //TODO: Add the rest of the cases
+      // case AuthStatus.authenticated:
+      //   this.router.navigateByUrl('/')
+      //   break
+      // case AuthStatus.notAuthenticated:
+      //   this.router.navigateByUrl('raffle/raffles')
+      //   break
     }
 
   })

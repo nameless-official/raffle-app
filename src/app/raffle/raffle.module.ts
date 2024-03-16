@@ -7,7 +7,8 @@ import { RaffleLayoutComponent } from './layout/raffle-layout/raflle-layout.comp
 import { RafflesComponent } from './pages/raffles/raffles.component';
 import { NotRafflesComponent } from './components/raffle/not-raffles/not-raffles.component';
 import { ListRafflesComponent } from './components/raffle/list-raffles/list-raffles.component';
-import { RaffleComponent } from './components/raffle/raffle/raffle.component';
+import { RaffleComponent } from './pages/raffle/raffle.component';
+
 
 
 @NgModule({
