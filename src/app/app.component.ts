@@ -35,7 +35,7 @@ export class AppComponent implements OnInit {
         this.router.navigateByUrl('/')
         break
       case AuthStatus.notAuthenticated:
-        this.router.navigateByUrl('auth/login')
+        this.router.navigateByUrl('raffle/raffles')
         break
     }
 

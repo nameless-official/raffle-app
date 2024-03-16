@@ -1,1 +1,2 @@
-<p>raffles works!</p>
+<app-list-raffles *ngIf="raffles().length > 0" [raffles]="raffles()"></app-list-raffles>
+<app-not-raffles *ngIf="raffles().length === 0"></app-not-raffles>

@@ -8,23 +8,23 @@ import { MainComponent } from './main.component';
 import { DashboardComponent } from './shared/pages/dashboard/dashboard.component';
 
 const routes: Routes = [
-
+  // {
+  //   path: '', component: MainComponent,
+  //   children: [
+  //     { path: '', component: DashboardComponent, canActivate: [isAuthenticatedGuard] },
+  //   ]
+  // },
   {
-    path: '', component: MainComponent,
-    children: [
-      { path: '', component: DashboardComponent, canActivate: [isAuthenticatedGuard] },
-      {
-        path: 'auth',
-        loadChildren: () => import('./auth/auth.module').then(module => module.AuthModule),
-        canActivate: [isNotAuthenticatedGuard]
-      },
-      {
-        path: 'raffle',
-        loadChildren: () => import('./raffle/raffle.module').then(module => module.RaffleModule),
-        canActivate: [isAuthenticatedGuard]
-      },
-
-    ]
+    path: '', redirectTo: '/raffle', pathMatch: 'full'
+  },
+  {
+    path: 'raffle',
+    loadChildren: () => import('./raffle/raffle.module').then(module => module.RaffleModule),
+  },
+  {
+    path: 'auth',
+    loadChildren: () => import('./auth/auth.module').then(module => module.AuthModule),
+    canActivate: [isNotAuthenticatedGuard]
   },
   { path: 'error', component: ErrorComponent },
   { path: 'notfound', component: NotfoundComponent },

@@ -1,0 +1,36 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 77vh;
+    background: linear-gradient(135deg, #673AB7, #512DA8); // Gradient background
+  }
+  
+  .message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  img {
+    max-width: 100%;
+  }
+  
+  .text {
+    text-align: center;
+    margin-top: 20px; // Espacio entre la imagen y el texto
+    color: #FFF;
+  
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); // Sombra de texto
+    }
+  
+    p {
+      font-size: 1.2rem;
+      font-style: italic; // Estilo de fuente itálica
+      opacity: 0.8; // Opacidad reducida
+    }
+  }
+  

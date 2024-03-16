@@ -1,0 +1,81 @@
+:host ::ng-deep {
+    header {
+        background-color: #673AB7;
+        color: #FFF;
+        padding: 20px;
+        text-align: center;
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+
+            img {
+                max-height: 50px;
+                /* Ajusta el tamaño máximo del logotipo */
+                margin-right: 10px;
+                /* Espaciado a la derecha del logotipo */
+            }
+
+            h1 {
+                font-size: 1.5rem;
+                margin: 0;
+            }
+        }
+    }
+
+    footer {
+        background-color: #673AB7;
+        color: #FFF;
+        padding: 40px 20px;
+        /* Espaciado interior del pie de página */
+        text-align: center;
+    }
+
+    .footer-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .footer-logo img {
+        height: 50px;
+        /* Ajusta el tamaño del logotipo del pie de página */
+        margin-bottom: 10px;
+        /* Espaciado inferior del logotipo */
+    }
+
+    .footer-links ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .footer-links ul li {
+        display: inline;
+        margin-right: 20px;
+        /* Espaciado entre los enlaces */
+    }
+
+    .footer-links ul li:last-child {
+        margin-right: 0;
+        /* Elimina el margen derecho del último enlace */
+    }
+
+    .footer-links ul li a {
+        color: #FFF;
+        text-decoration: none;
+        transition: color 0.3s ease;
+
+        &:hover {
+            color: #512DA8;
+            /* Cambia el color del enlace al pasar el ratón sobre él */
+        }
+    }
+
+    .footer-info {
+        font-size: 0.9rem;
+        /* Tamaño de fuente más pequeño para la información de derechos de autor */
+    }
+}
