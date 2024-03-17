@@ -1,7 +1,11 @@
+<p-toast
+  [breakpoints]="{ '920px': { width: '100%', right: '0', left: '0' } }"
+></p-toast>
+
 <!-- participar-en-sorteo.component.html -->
-<div class="raffle-details">
+<div class="raffle-details" *ngIf="!this.isLoading()">
     <div class="header">
-      <img [src]="getImagePath(raffle.image_url)" height="150rem" alt="Logo del sorteo">
+      <img [src]="getImagePath(raffle.image_url || '')" height="150rem" alt="Logo del sorteo">
       <h2>{{ raffle.name }}</h2>
     </div>
     <div class="info">
@@ -35,3 +39,19 @@
     </div>
     <button class="participate-button" (click)="participate()">¡Participar en el Sorteo!</button>
   </div>
+
+
+  <p-dialog
+  [visible]="showForm()"
+  [style]="{ width: '450px' }"
+  header="Participar en el sorteo"
+  [modal]="true"
+  class="p-fluid"
+  (onDragEnd)="onDragEnd()"
+>
+  <app-participation-form
+    *ngIf="showForm()"
+    [raffleId]="this.raffle.raffle_id"
+    (acceptedRequest)="processResponseCreate($event)"
+  ></app-participation-form>
+</p-dialog>

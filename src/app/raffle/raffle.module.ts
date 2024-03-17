@@ -8,11 +8,12 @@ import { RafflesComponent } from './pages/raffles/raffles.component';
 import { NotRafflesComponent } from './components/raffle/not-raffles/not-raffles.component';
 import { ListRafflesComponent } from './components/raffle/list-raffles/list-raffles.component';
 import { RaffleComponent } from './pages/raffle/raffle.component';
+import { ParticipationFormComponent } from './components/raffle/participation-form/participation-form.component';
 
 
 
 @NgModule({
-  declarations: [RaffleLayoutComponent, RafflesComponent, NotRafflesComponent, ListRafflesComponent, RaffleComponent],
+  declarations: [RaffleLayoutComponent, RafflesComponent, NotRafflesComponent, ListRafflesComponent, RaffleComponent, ParticipationFormComponent],
   imports: [
     CommonModule,
     RaffleRoutingModule,
