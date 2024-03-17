@@ -20,6 +20,9 @@ export class MenuComponent implements OnInit {
         label: 'Páginas', icon: 'pi pi-fw pi-copy', routerLink: ['/pages'],
         items: [
           {
+            label: 'Estados de Sorteos', icon: 'pi pi-fw pi-th-large', routerLink: ['/admin/data-management/raffles-status'],
+          },
+          {
             label: 'Sorteos', icon: 'pi pi-fw pi-th-large', routerLink: ['/admin/data-management/raffles'],
           },
         ]

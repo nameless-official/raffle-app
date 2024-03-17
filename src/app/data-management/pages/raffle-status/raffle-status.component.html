@@ -1,0 +1,33 @@
+<p-toast
+  [breakpoints]="{ '920px': { width: '100%', right: '0', left: '0' } }"
+></p-toast>
+
+<app-datagrid
+  [dataSource]="raffleStatusList()"
+  [configurations]="configurationDatagrid()"
+  [operationsData]="operationsDatagrid()"
+  [loading]="loadingData()"
+></app-datagrid>
+
+<p-confirmDialog
+  key="deleteConfirm"
+  [style]="{ width: '350px' }"
+  acceptButtonStyleClass="p-button-text"
+  rejectButtonStyleClass="p-button-text"
+></p-confirmDialog>
+
+<p-dialog
+  [visible]="showForm()"
+  [style]="{ width: '450px' }"
+  header="Estado de Sorteo"
+  [modal]="true"
+  class="p-fluid"
+  (onDragEnd)="onDragEnd()"
+>
+  <app-form-raffle-status
+    *ngIf="showForm()"
+    [dataRecord]="this.raffleStatus()"
+    (successCreate)="processResponseCreate($event)"
+    (successUpdate)="processResponseUpdate($event)"
+  ></app-form-raffle-status>
+</p-dialog>
