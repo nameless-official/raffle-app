@@ -13,14 +13,14 @@ export class MenuComponent implements OnInit {
       {
         label: 'Inicio', icon: 'pi pi-fw pi-home',
         items: [
-          { label: 'Inicio', icon: 'pi pi-fw pi-home', routerLink: ['/'] }
+          { label: 'Inicio', icon: 'pi pi-fw pi-home', routerLink: ['/admin'] }
         ]
       },
       {
         label: 'Páginas', icon: 'pi pi-fw pi-copy', routerLink: ['/pages'],
         items: [
           {
-            label: 'Sorteos', icon: 'pi pi-fw pi-th-large', routerLink: ['/raffle/raffles'],
+            label: 'Sorteos', icon: 'pi pi-fw pi-th-large', routerLink: ['/admin/data-management/raffles'],
           },
         ]
       },

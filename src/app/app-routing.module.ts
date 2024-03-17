@@ -8,14 +8,18 @@ import { MainComponent } from './main.component';
 import { DashboardComponent } from './shared/pages/dashboard/dashboard.component';
 
 const routes: Routes = [
-  // {
-  //   path: '', component: MainComponent,
-  //   children: [
-  //     { path: '', component: DashboardComponent, canActivate: [isAuthenticatedGuard] },
-  //   ]
-  // },
   {
     path: '', redirectTo: '/raffles', pathMatch: 'full'
+  },
+  {
+    path: 'admin', component: MainComponent,
+    children: [
+      { path: 'admin', component: DashboardComponent, canActivate: [isAuthenticatedGuard] },
+      {
+        path: 'data-management',
+        loadChildren: () => import('./data-management/data-management.module').then(module => module.DataManagementModule),
+      },
+    ]
   },
   {
     path: 'raffles',
