@@ -1,4 +1,6 @@
 import { Component, inject, signal } from '@angular/core';
+import { PrizeLevel } from '../../interfaces/prize-level.interface';
+import { PrizeLevelsService } from '../../services/prize-levels.service';
 import { MessageService, ConfirmationService } from 'primeng/api';
 import { TableLazyLoadEvent, Table } from 'primeng/table';
 import { switchMap, of, debounceTime } from 'rxjs';
@@ -6,18 +8,16 @@ import { ConfigurationDatagrid } from 'src/app/shared/interfaces/configuration-d
 import { DataSourceOperations } from 'src/app/shared/interfaces/datasource-operations.interface';
 import { SearchCondition } from 'src/app/shared/interfaces/search-condition.interface';
 import { validateKeyForSearch } from 'src/app/shared/utils/keyboard-validations.util';
-import { RaffleStatus } from '../../interfaces/raffle-status.interface';
-import { RaffleStatusService } from '../../services/raffle-status.service';
 
 @Component({
-  selector: 'app-raffle-status',
-  templateUrl: './raffle-status.component.html',
-  styleUrls: ['./raffle-status.component.scss'],
+  selector: 'app-prize-levels',
+  templateUrl: './prize-levels.component.html',
+  styleUrls: ['./prize-levels.component.scss'],
   providers: [MessageService, ConfirmationService]
 })
-export class RaffleStatusComponent {
+export class PrizeLevelsComponent {
 
-  protected raffleStatusList = signal<RaffleStatus[]>([]);
+  protected prizeLevelsList = signal<PrizeLevel[]>([]);
   protected configurationDatagrid = signal<ConfigurationDatagrid | null>(null);
   protected operationsDatagrid = signal<DataSourceOperations | null>(null);
 
@@ -28,16 +28,18 @@ export class RaffleStatusComponent {
   protected loadingData = signal<boolean>(false);
   protected showForm = signal<boolean>(false);
 
-  private RaffleStatusService = inject(RaffleStatusService);
+  private prizeLevelsService = inject(PrizeLevelsService);
   private messageService = inject(MessageService);
   private confirmationService = inject(ConfirmationService);
 
-  protected raffleStatus = signal<RaffleStatus>({
-    code: '',
-    name: '',
-    sort: 1,
-    is_finished: false
-  });
+  protected prizeLevel = signal<PrizeLevel>(
+    {
+      grouper: '',
+      code: '',
+      name: '',
+      sort: 0
+    }
+  );
 
   constructor() {
     this.configurationDatagrid.set({
@@ -55,16 +57,15 @@ export class RaffleStatusComponent {
           header: 'Orden'
         },
         {
-          field: 'is_finished',
-          header: '¿Está finalizado?',
-          dataType: 'boolean'
-        },
+          field: 'grouper',
+          header: 'Agrupador'
+        }
       ],
       filtersFields: ['name'],
       numberShowRows: this.limitData(),
-      recordKey: 'raffle_status_id',
+      recordKey: 'prize_level_id',
       rowsPerPageOptions: [10, 25, 50],
-      title: 'Estados de los sorteos',
+      title: 'Niveles de premios',
       totalRecords: 0,
       resizableColumns: true,
       batchDelete: true
@@ -98,7 +99,7 @@ export class RaffleStatusComponent {
           acceptLabel: 'Si',
           rejectLabel: 'No',
           accept: () => {
-            this.RaffleStatusService.deleteRecord(Number(record.raffle_status_id)).subscribe((responseData) => {
+            this.prizeLevelsService.deleteRecord(Number(record.prize_level_id)).subscribe((responseData) => {
               if (!responseData) return
               this.loadData()
               this.messageService.add({
@@ -128,16 +129,16 @@ export class RaffleStatusComponent {
           acceptLabel: 'Si',
           rejectLabel: 'No',
           accept: () => {
-            const recordsIds = records.map((record: RaffleStatus) => record.raffle_status_id);
+            const recordsIds = records.map((record: PrizeLevel) => record.prize_level_id);
 
             const conditions: SearchCondition[] = [{
-              field: 'raffle_status_id',
+              field: 'prize_level_id',
               operator: 'in',
               value: recordsIds
             }];
 
             this.loadingData.set(true);
-            this.RaffleStatusService.deleteBatchRecords(conditions).subscribe({
+            this.prizeLevelsService.deleteBatchRecords(conditions).subscribe({
               next: (dataResponse: any) => {
                 if (!dataResponse) return
                 this.loadData()
@@ -155,12 +156,12 @@ export class RaffleStatusComponent {
         });
       },
       update: (record: Record<string, string | number | boolean>) => {
-        this.raffleStatus.set({
-          raffle_status_id: Number(record.raffle_status_id) || 0,
+        this.prizeLevel.set({
+          prize_level_id: Number(record.prize_level_id) || 0,
           name: record.name.toString() || '',
           code: record.code.toString() || '',
           sort: Number(record.sort) || 1,
-          is_finished: Boolean(record.is_finished) || false
+          grouper: record.grouper.toString() || '',
         });
 
         this.showForm.set(true);
@@ -185,7 +186,7 @@ export class RaffleStatusComponent {
 
         this.loadingData.set(true);
 
-        this.RaffleStatusService.getTotalRecordsByConditions(conditions).pipe(
+        this.prizeLevelsService.getTotalRecordsByConditions(conditions).pipe(
           switchMap((responseData: number) => {
 
             this.configurationDatagrid.update((record) => {
@@ -195,14 +196,14 @@ export class RaffleStatusComponent {
 
             if (responseData === 0) return of([])
 
-            return this.RaffleStatusService.searchRecords(conditions)
+            return this.prizeLevelsService.searchRecords(conditions)
               .pipe(debounceTime(100))
 
           })
         ).subscribe(
           {
-            next: (dataResponse: RaffleStatus[]) => {
-              if (dataResponse) this.raffleStatusList.set(dataResponse);
+            next: (dataResponse: PrizeLevel[]) => {
+              if (dataResponse) this.prizeLevelsList.set(dataResponse);
               this.loadingData.set(false);
             },
             error: () => this.loadingData.set(false)
@@ -219,7 +220,7 @@ export class RaffleStatusComponent {
   private loadData(reOrder: boolean = false): void {
     this.loadingData.set(true);
 
-    this.RaffleStatusService.getTotalRecords().subscribe(
+    this.prizeLevelsService.getTotalRecords().subscribe(
       {
         next: (responseData: number) => {
           this.configurationDatagrid.update((record) => {
@@ -228,20 +229,20 @@ export class RaffleStatusComponent {
           })
 
           if (responseData === 0) {
-            this.raffleStatusList.set([]);
+            this.prizeLevelsList.set([]);
             this.loadingData.set(false);
             return
           }
 
           if (reOrder) {
-            this.RaffleStatusService.getAllRecords(this.offsetData(), this.limitData(), this.orderField(), this.orderDirection()).subscribe((responseData: RaffleStatus[]) => {
-              if (responseData) this.raffleStatusList.set(responseData);
+            this.prizeLevelsService.getAllRecords(this.offsetData(), this.limitData(), this.orderField(), this.orderDirection()).subscribe((responseData: PrizeLevel[]) => {
+              if (responseData) this.prizeLevelsList.set(responseData);
 
               this.loadingData.set(false);
             });
           } else {
-            this.RaffleStatusService.getAllRecords(this.offsetData(), this.limitData()).subscribe((responseData: RaffleStatus[]) => {
-              if (responseData) this.raffleStatusList.set(responseData);
+            this.prizeLevelsService.getAllRecords(this.offsetData(), this.limitData()).subscribe((responseData: PrizeLevel[]) => {
+              if (responseData) this.prizeLevelsList.set(responseData);
 
               this.loadingData.set(false);
             });
@@ -251,12 +252,10 @@ export class RaffleStatusComponent {
         error: () => this.loadingData.set(false)
       }
     )
-
-
   }
 
   processResponseCreate(event: boolean): void {
-    this.orderField.set('raffle_status_id');
+    this.orderField.set('prize_level_id');
     this.orderDirection.set(-1);
     this.onFinishResponseForm(event, 'El registro ha sido creado exitosamente', true);
   }
@@ -284,11 +283,13 @@ export class RaffleStatusComponent {
 
 
   private resetObject(): void {
-    this.raffleStatus.set({
-      code: '',
-      name: '',
-      sort: 1,
-      is_finished: false
-    });
+    this.prizeLevel.set(
+      {
+        grouper: '',
+        code: '',
+        name: '',
+        sort: 0
+      }
+    );
   }
 }

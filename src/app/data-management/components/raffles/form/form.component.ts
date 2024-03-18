@@ -11,7 +11,7 @@ import { isValidField, getFieldError } from 'src/app/shared/utils/forms-validato
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.scss']
 })
-export class FormComponent {
+export class FormRaffleComponent {
 
 
   @Input({ required: true }) dataRecord: Raffle = {

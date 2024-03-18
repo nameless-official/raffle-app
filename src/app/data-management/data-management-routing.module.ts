@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { DataManagementLayoutComponent } from './layout/data-management-layout/data-management-layout.component';
 import { RafflesComponent } from './pages/raffles/raffles.component';
 import { RaffleStatusComponent } from './pages/raffle-status/raffle-status.component';
+import { PrizeLevelsComponent } from './pages/prize-levels/prize-levels.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,10 @@ const routes: Routes = [
       {
         path: 'raffles-status',
         component: RaffleStatusComponent
+      },
+      {
+        path: 'prize-levels',
+        component: PrizeLevelsComponent
       },
       {
         path: '**',
