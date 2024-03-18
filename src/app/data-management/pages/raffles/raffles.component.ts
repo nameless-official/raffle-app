@@ -114,7 +114,6 @@ export class RafflesComponent {
           )
           .subscribe({
             next: (responseData: Raffle[]) => {
-              console.log(responseData);
               this.raffles.set(responseData);
               this.loadingData.set(false);
             },

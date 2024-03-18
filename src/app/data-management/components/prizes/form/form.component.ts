@@ -55,7 +55,6 @@ export class FormPrizeComponent {
   private imageFile = signal<File>(null)
 
   ngOnInit(): void {
-    console.log(this.dataRecord)
     this.textButton.set(this.dataRecord.prize_id ? 'Actualizar' : 'Crear')
     this.formData.controls['name'].setValue(this.dataRecord.name)
     this.formData.controls['value'].setValue(this.dataRecord.value)

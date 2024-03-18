@@ -1,28 +1,28 @@
 .product-badge {
-    border-radius: var(--border-radius);
-    padding: 0.25em 0.5rem;
-    text-transform: uppercase;
-    font-weight: 700;
-    font-size: 12px;
-    letter-spacing: 0.3px;
-  
-    &.status-instock {
-      background: #c8e6c9;
-      color: #256029;
-    }
-  
-    &.status-outofstock {
-      background: #ffcdd2;
-      color: #c63737;
-    }
-  
-    &.status-lowstock {
-      background: #feedaf;
-      color: #8a5340;
-    }
+  border-radius: var(--border-radius);
+  padding: 0.25em 0.5rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.3px;
+
+  &.status-instock {
+    background: #c8e6c9;
+    color: #256029;
   }
 
-  $loading-color: #673AB7;
+  &.status-outofstock {
+    background: #ffcdd2;
+    color: #c63737;
+  }
+
+  &.status-lowstock {
+    background: #feedaf;
+    color: #8a5340;
+  }
+}
+
+$loading-color: #673ab7;
 
 .loading-container {
   position: fixed; /* Cambiado a fixed */
@@ -52,11 +52,10 @@
 
 /* _variables.scss */
 
-$primary-color: #512DA8;
-$secondary-color: #E040FB;
+$primary-color: #512da8;
+$secondary-color: #e040fb;
 $text-color: #333;
 $background-color: #f9f9f9;
-
 
 .raffle-container {
   border-radius: 10px;
@@ -84,7 +83,7 @@ $background-color: #f9f9f9;
 
   .raffle-info {
     margin-top: 2em;
-    p {
+    div {
       color: $text-color;
       font-size: 16px;
       margin-bottom: 10px;
@@ -93,10 +92,14 @@ $background-color: #f9f9f9;
         margin-bottom: 0;
       }
     }
+
+    display: flex;
+    justify-content: space-evenly;
   }
 
   .raffle-image {
     margin-top: 20px;
+    margin-bottom: 20px;
     display: flex;
     justify-content: center;
     img {
@@ -115,7 +118,7 @@ $background-color: #f9f9f9;
     margin-top: 10px; /* Espacio adicional entre el estado y el contenido */
   }
 
-  .status-name{
+  .status-name {
     padding: 5px;
     background: orange;
     color: white;
