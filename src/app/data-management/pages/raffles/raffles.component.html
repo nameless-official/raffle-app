@@ -7,8 +7,8 @@
     <div class="col-12">
         <div class="card">
             <h5>Sorteos</h5>
-            <p-dataView #dv [value]="raffles()" [paginator]="true" [rows]="numberShowRegisters()"
-                filterBy="start_date" [sortField]="sortField()" [sortOrder]="sortOrder()" layout="grid"
+            <p-dataView #dv [value]="raffles()" [paginator]="true" [rows]="numberShowRegisters()" filterBy="start_date"
+                [sortField]="sortField()" [sortOrder]="sortOrder()" layout="grid"
                 currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} Registros"
                 [showCurrentPageReport]="true" [totalRecords]="totalRecords()" [loading]="loadingData()" [lazy]="true"
                 (onLazyLoad)="onLoadData($event)">
@@ -21,12 +21,7 @@
                             <input #nameField id="nameField" type="Buscar..." pInputText placeholder="Buscar por nombre"
                                 (keyup.enter)="onTextFilter($event)" (keyup)="onTextFilter($event)" />
                         </span>
-                        <span class="p-input-icon-left mb-2 md:mb-0">
-                            <i class="pi pi-search"></i>
-                            <input #barcodeField id="barcodeField" type="Buscar..." pInputText
-                                placeholder="Buscar código de barras" (keyup.enter)="onTextFilter($event)"
-                                (keyup)="onTextFilter($event)" />
-                        </span>
+
                         <div class="flex gap-2">
                             <p-button icon="pi pi-plus" styleClass="p-button-rounded" pTooltip="Nuevo Sorteo"
                                 (onClick)="activeNewRaffleForm()"></p-button>
@@ -42,20 +37,22 @@
                     <p-dialog [visible]="showDetail()" [style]="{ width: '410px', height: '100vh' }" header="Sorteo"
                         [modal]="true" class="p-fluid" [resizable]="true" (onDragEnd)="onDragEndDetail()">
                         <p-scrollPanel [style]="{ width: '100%', height: '100%' }">
-                            AGREGAR DETALLE DE RAFFLE
+                            <app-raffle-detail *ngIf="showDetail()" [raffle]="this.raffleDetail()"></app-raffle-detail>
                         </p-scrollPanel>
                     </p-dialog>
                 </ng-template>
 
                 <ng-template let-raffle pTemplate="listItem">
                     <div class="col-12">
-                        AGREGAR VISTA DE LISTA
+                        <raffle-list-view [raffle]="raffle" (onViewData)="onViewData($event)"
+                            (onEditData)="onEditData($event)" (onDeleteData)="onDeleteData($event)"></raffle-list-view>
                     </div>
                 </ng-template>
 
                 <ng-template let-raffle pTemplate="gridItem">
                     <div class="col-12 md:col-4">
-                        AGRAGAR VISTA DE GRID
+                        <raffle-grid-view [raffle]="raffle" (onViewData)="onViewData($event)"
+                            (onEditData)="onEditData($event)" (onDeleteData)="onDeleteData($event)"></raffle-grid-view>
                     </div>
                 </ng-template>
             </p-dataView>

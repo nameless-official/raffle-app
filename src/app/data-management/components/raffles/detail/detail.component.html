@@ -1,0 +1,19 @@
+<!-- raffle.component.html -->
+
+<div class="raffle-container">
+  <div class="raffle-header">
+    <h1>{{ raffle.name }}</h1>
+    <p>{{ raffle.description }}</p>
+    <div class="raffle-status" [ngClass]="{'finished': raffle.raffleStatus.is_finished}">
+      <span class="status-name">{{ raffle.raffleStatus.name }}</span>
+      <span *ngIf="raffle.raffleStatus.is_finished" class="finished-status">Finished</span>
+    </div>
+  </div>
+  <div class="raffle-info">
+    <p><strong>Fecha de inicio: </strong> {{ raffle.start_date }}</p>
+    <p><strong>Fecha de fin: </strong> {{ raffle.end_date }}</p>
+  </div>
+  <div class="raffle-image">
+    <img [src]="raffle.image_url || './../../../../../assets/devtalles-branding/gift-devi-3.png'" alt="Raffle Image">
+  </div>
+</div>

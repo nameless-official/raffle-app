@@ -2,8 +2,8 @@ import { Component, OnInit, inject, computed, effect } from '@angular/core';
 import { PrimeNGConfig } from 'primeng/api';
 import { AuthService } from './auth/services/auth.service';
 import { AuthStatus } from './auth/enums';
-import { Router } from '@angular/router';
-import { MessageModule } from 'primeng/message';
+import {  NavigationEnd, Router } from '@angular/router';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -32,12 +32,17 @@ export class AppComponent implements OnInit {
         return
         break;
       //TODO: Add the rest of the cases
-      // case AuthStatus.authenticated:
-      //   this.router.navigateByUrl('/')
-      //   break
-      // case AuthStatus.notAuthenticated:
-      //   this.router.navigateByUrl('raffle/raffles')
-      //   break
+      case AuthStatus.authenticated:
+        this.router.navigateByUrl('/admin')
+        break
+      case AuthStatus.notAuthenticated:
+        this.router.events.pipe(
+          filter(event => event instanceof NavigationEnd)
+        ).subscribe((event: NavigationEnd) => {
+          const url: string = event.url
+          if(url.includes('admin')) this.router.navigateByUrl('/auth/login')
+        });
+        break
     }
 
   })

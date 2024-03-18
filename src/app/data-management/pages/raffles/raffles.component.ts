@@ -101,6 +101,7 @@ export class RafflesComponent {
 
         this.rafflesService.getAllRecords(this.offsetData(), this.limitData(), this.orderField(), this.orderDirection()).subscribe({
           next: (responseData: Raffle[]) => {
+            console.log(responseData)
             this.raffles.set(responseData);
             this.loadingData.set(false)
           },
@@ -126,7 +127,7 @@ export class RafflesComponent {
 
     if (eventText.target.id !== 'nameField') this.nameField.nativeElement.value = ''
 
-    const fieldSearch = eventText.target.id =  'description'
+    const fieldSearch = 'description'
 
     const conditions: SearchCondition[] = [{
       field: fieldSearch,
@@ -156,7 +157,6 @@ export class RafflesComponent {
       }
     )
   }
-
 
   onViewData(raffleData: Raffle): void {
     this.raffleDetail.set({ ...raffleData })
@@ -234,8 +234,6 @@ export class RafflesComponent {
       }
     );
   }
-
-
 
   activeNewRaffleForm(): void {
     this.showForm.set(true)
