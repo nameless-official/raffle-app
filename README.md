@@ -4,11 +4,19 @@
 
 <h2>🚀 Demo</h2>
 
-[raffle-api.up.railway.app](raffle-api.up.railway.app)
+[raffle-app.azurewebsites.net](https://raffle-app.azurewebsites.net/)
 
 <h2>Screenshots:</h2>
 
-<img src="https://firebasestorage.googleapis.com/v0/b/nameless-afa75.appspot.com/o/screenshot%2F1710748122157-Screenshot%202024-03-18%20014634.png?alt=media&amp;token=11a2be52-bd19-43f4-9709-b4050d98c024" alt="project-screenshot" width="480" height="270/">
+<img src="https://firebasestorage.googleapis.com/v0/b/nameless-afa75.appspot.com/o/screenshots%2F1710753963087-Screenshot%202024-03-18%20032441.png?alt=media&token=5bcb5de1-bd18-4da1-8a9c-7e366ffce65f" alt="project-screenshot" width="480" height="270/">
+
+<img src="https://firebasestorage.googleapis.com/v0/b/nameless-afa75.appspot.com/o/screenshots%2F1710753963087-Screenshot%202024-03-18%20032441.png?alt=media&token=5bcb5de1-bd18-4da1-8a9c-7e366ffce65f" alt="project-screenshot" width="480" height="270/">
+
+<img src="https://firebasestorage.googleapis.com/v0/b/nameless-afa75.appspot.com/o/screenshots%2F1710753963087-Screenshot%202024-03-18%20032441.png?alt=media&token=5bcb5de1-bd18-4da1-8a9c-7e366ffce65f" alt="project-screenshot" width="480" height="270/">
+
+<img src="https://firebasestorage.googleapis.com/v0/b/nameless-afa75.appspot.com/o/screenshots%2F1710753963087-Screenshot%202024-03-18%20032441.png?alt=media&token=5bcb5de1-bd18-4da1-8a9c-7e366ffce65f" alt="project-screenshot" width="480" height="270/">
+
+<img src="https://firebasestorage.googleapis.com/v0/b/nameless-afa75.appspot.com/o/screenshots%2F1710753963087-Screenshot%202024-03-18%20032441.png?alt=media&token=5bcb5de1-bd18-4da1-8a9c-7e366ffce65f" alt="project-screenshot" width="480" height="270/">
   
   
 <h2>🧐 Cataracterísticas</h2>
@@ -54,6 +62,25 @@ export const environment = {
   apiUrl: "http://localhost:3000",
 };
 ```
+
+<p> 5. Acceder a la administración</p>
+
+- Hay que acceder através de la URL: `https://raffle-app.azurewebsites.net/auth/login`
+  Usuario: admin
+  Contraseña: Adm1ni$tR470r
+
+- Se puede dar mantenimento a los sorteos `https://raffle-app.azurewebsites.net/admin/raffles`
+- Se puede dar mantenimento a los estados de sorteos `https://raffle-app.azurewebsites.net/admin/data-managment/raffle-status`
+- Se puede dar mantenimento a los premios `https://raffle-app.azurewebsites.net/admin/data-managment/prizes`
+- Se puede dar mantenimento a los niveles de premios `https://raffle-app.azurewebsites.net/data-managment/admin/prize-levels`
+- Se puede ver a los participantes de un sorteo `https://raffle-app.azurewebsites.net/admin/data-managment/raffle-data/nombre-del-sorteo`
+- Se puede escoger a los ganadores de un sorteo, de forma aleatoria usando 2 tipos de algoritmos o de forma manual `https://raffle-app.azurewebsites.net/admin/data-managment/raffle-data/nombre-del-sorteo`
+
+<p> 6. Vistas públicas</p>
+
+- Ver los sorteos actuales: `https://raffle-app.azurewebsites.net/raffles`
+- Ver un sorteo en específico: `https://raffle-app.azurewebsites.net/raffles/nombre-del-sorteo`
+- Ver a los ganadores del sorteo: `https://raffle-app.azurewebsites.net/raffles/nombre-del-sorteo` (cuando el sorteo esté en estado de FINISHED)
 
 <h2>💻 Built with</h2>
 
