@@ -14,6 +14,10 @@ import { ImgUploadComponent } from './components/raffles/img-upload/img-upload.c
 import { FormRaffleComponent } from './components/raffles/form/form.component';
 import { PrizeLevelsComponent } from './pages/prize-levels/prize-levels.component';
 import { FormPrizeLevelComponent } from './components/prize-levels/form/form.component';
+import { ListViewPrizeComponent } from './components/prizes/list-view/list-view.component';
+import { GridViewPrizeComponent } from './components/prizes/grid-view/grid-view.component';
+import { PrizesComponent } from './pages/prizes/prizes.component';
+import { FormPrizeComponent } from './components/prizes/form/form.component';
 
 
 @NgModule({
@@ -28,7 +32,11 @@ import { FormPrizeLevelComponent } from './components/prize-levels/form/form.com
     ImgUploadComponent,
     FormRaffleComponent,
     PrizeLevelsComponent,
-    FormPrizeLevelComponent
+    FormPrizeLevelComponent,
+    ListViewPrizeComponent,
+    GridViewPrizeComponent,
+    PrizesComponent,
+    FormPrizeComponent
   ],
   imports: [
     CommonModule,

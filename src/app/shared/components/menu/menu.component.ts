@@ -26,6 +26,9 @@ export class MenuComponent implements OnInit {
             label: 'Niveles de premios', icon: 'pi pi-fw pi-th-large', routerLink: ['/admin/data-management/prize-levels'],
           },
           {
+            label: 'Premios', icon: 'pi pi-fw pi-th-large', routerLink: ['/admin/data-management/prizes'],
+          },
+          {
             label: 'Sorteos', icon: 'pi pi-fw pi-th-large', routerLink: ['/admin/data-management/raffles'],
           },
         ]

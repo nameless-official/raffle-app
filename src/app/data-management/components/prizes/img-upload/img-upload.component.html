@@ -1,0 +1,15 @@
+<div class="container-img">
+    <div class="img-container">
+      <img *ngIf="selectedImage" [src]="selectedImage" [alt]="imageAlt" />
+    </div>
+    <div class="flex justify-content-end upload-container">
+      <i class="pi pi-pencil" (click)="openFileInput.click()"></i>
+      <input
+        type="file"
+        #openFileInput
+        style="display: none"
+        (change)="handleFileInput($event)"
+        accept="image/*"
+      />
+    </div>
+  </div>

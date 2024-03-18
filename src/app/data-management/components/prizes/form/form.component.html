@@ -1,0 +1,110 @@
+<form [formGroup]="formData" (ngSubmit)="onSubmit()" class="mt-3">
+    <div class="flex gap-3 flex-column">
+        <div class="grid row-gap-3">
+            <div class="sm:col-12 md:col-12 lg:col-2 xl:col-2">
+                <div class="flex justify-content-center">
+                    <div class="container-img-upload">
+                        <app-img-upload imageAlt="Producto" [selectedImage]="dataRecord.image_url"
+                            (selectedImageFile)="onSelectedImageFile($event)"></app-img-upload>
+                    </div>
+                </div>
+            </div>
+            <div class="sm:col-12 md:col-12 lg:col-10 xl:col-10">
+                <div class="mt-2">
+                    <div class="p-inputgroup">
+                        <span class="p-inputgroup-addon">
+                            <i class="pi pi-box"></i>
+                        </span>
+                        <span class="p-float-label">
+                            <input pInputText formControlName="name" autocomplete="off" id="name" />
+                            <label htmlFor="name">Nombre</label>
+                        </span>
+                    </div>
+                    <small *ngIf="verifyValidatedField('name')" class="p-error">{{
+                        this.getMessageErrorByField("name")
+                        }}</small>
+                </div>
+                <div class="mt-4" >
+                    <div class="p-inputgroup">
+                        <span class="p-inputgroup-addon">
+                            <i class="pi pi-angle-double-down"></i>
+                        </span>
+                        <span class="p-float-label">
+                            <input pInputText formControlName="value" autocomplete="off" id="value" />
+                            <label htmlFor="value">Valor</label>
+                        </span>
+                    </div>
+                    <small *ngIf="verifyValidatedField('value')" class="p-error">{{
+                        this.getMessageErrorByField("value")
+                        }}</small>
+                </div>
+                <div class="mt-4" >
+                    <div class="p-inputgroup">
+                        <span class="p-inputgroup-addon">
+                            <i class="pi pi-angle-double-down"></i>
+                        </span>
+                        <span class="p-float-label">
+                            
+                            <p-inputNumber placeholder="Cantidad" formControlName="quantity" [showButtons]="true"  id="quantity" ></p-inputNumber>
+                            <label htmlFor="quantity">Cantidad</label>
+                        </span>
+                    </div>
+                    <small *ngIf="verifyValidatedField('quantity')" class="p-error">{{
+                        this.getMessageErrorByField("quantity")
+                        }}</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-2">
+            <div class="formGroup">
+                <span class="p-float-label">
+                    <p-dropdown #prizesLevelsDropdown formControlName="prizeLevel" [options]="prizeLevels()"
+                        optionLabel="name" dataKey="prize_level_id"
+                        placeholder="Seleccione el nivel del premio" [showClear]="true" [filter]="true"
+                        dropdownIcon="pi pi-th-large" filterBy="name" appendTo="body"
+                        id="prizeLevel"></p-dropdown>
+                    <label htmlFor="prizeLevel">Nivel de premio</label>
+                </span>
+            </div>
+            <small *ngIf="verifyValidatedField('prizeLevel')" class="p-error">{{
+                this.getMessageErrorByField("prizeLevel")
+                }}</small>
+        </div>
+        <div class="mt-2">
+            <div class="formGroup">
+                <span class="p-float-label">
+                    <p-dropdown #raffleDropdown formControlName="raffle" [options]="raffles()"
+                        optionLabel="name" dataKey="raffle_id"
+                        placeholder="Seleccione el Sorteo" [showClear]="true" [filter]="true"
+                        dropdownIcon="pi pi-th-large" filterBy="name" appendTo="body"
+                        id="raffle"></p-dropdown>
+                    <label htmlFor="raffle">Sorteo</label>
+                </span>
+            </div>
+            <small *ngIf="verifyValidatedField('raffle')" class="p-error">{{
+                this.getMessageErrorByField("raffle")
+                }}</small>
+        </div>
+        <div class="mt-2">
+            <div class="p-inputgroup">
+                <span class="p-float-label">
+                  <textarea
+                    rows="5"
+                    cols="30"
+                    pInputTextarea
+                    formControlName="description"
+                    id="description"
+                  ></textarea>
+                  <label htmlFor="description">Descripción</label>
+                </span>
+              </div>
+            <small *ngIf="verifyValidatedField('description')" class="p-error">{{
+                this.getMessageErrorByField("description")
+                }}</small>
+        </div>
+        <div class="p-inputgroup flex justify-content-end">
+            <button type="submit" pButton [label]="this.textButton()"></button>
+        </div>
+    </div>
+</form>
