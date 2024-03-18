@@ -78,14 +78,6 @@ export class RafflesComponent {
   }
 
 
-  onSortChange(event: any): void {
-
-    const sort: SortValue = event.value;
-
-    this.orderField.set(sort.field);
-    this.orderDirection.set(sort.direction);
-    this.loadData();
-  }
 
   private loadData(): void {
     this.loadingData.set(true)
@@ -101,7 +93,6 @@ export class RafflesComponent {
 
         this.rafflesService.getAllRecords(this.offsetData(), this.limitData(), this.orderField(), this.orderDirection()).subscribe({
           next: (responseData: Raffle[]) => {
-            console.log(responseData)
             this.raffles.set(responseData);
             this.loadingData.set(false)
           },
@@ -200,7 +191,6 @@ export class RafflesComponent {
   }
 
   processResponseCreate(event: boolean): void {
-
     this.onFinishResponseForm(event, 'El registro ha sido creado exitosamente');
   }
 

@@ -14,8 +14,7 @@
                 (onLazyLoad)="onLoadData($event)">
                 <ng-template pTemplate="header">
                     <div class="grid grid-nogutter flex-column md:flex-row justify-content-between">
-                        <p-dropdown [options]="sortOptions()" placeholder="Order por Precio"
-                            (onChange)="onSortChange($event)"></p-dropdown>
+                        
                         <span class="p-input-icon-left mb-2 md:mb-0">
                             <i class="pi pi-search"></i>
                             <input #nameField id="nameField" type="Buscar..." pInputText placeholder="Buscar por nombre"
@@ -29,9 +28,12 @@
                         </div>
                     </div>
 
-                    <p-dialog [visible]="showForm()" [style]="{ width: '75vw', height: '80vh' }" header="Sorteo"
+                    <p-dialog [visible]="showForm()" [style]="{ width: '50vw', height: '60vh' }" header="Sorteo"
                         [modal]="true" class="p-fluid" [resizable]="false" (onDragEnd)="onDragEnd()">
-                        AGREGAR FORMULARIO DE RAFFLE
+                        
+                        <app-form-raffle *ngIf="showForm()" (successCreate)="processResponseCreate($event)"
+                            (successUpdate)="processResponseUpdate($event)"
+                            [dataRecord]="this.raffle()"></app-form-raffle>
                     </p-dialog>
 
                     <p-dialog [visible]="showDetail()" [style]="{ width: '410px', height: '100vh' }" header="Sorteo"

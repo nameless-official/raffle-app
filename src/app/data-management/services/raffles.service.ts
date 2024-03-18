@@ -3,8 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
 import { SearchCondition } from 'src/app/shared/interfaces/search-condition.interface';
 import { environment } from 'src/environments/environment';
-import * as saveAs from 'file-saver'
-import { Raffle } from '../interfaces/raffle.interface';
+import { Raffle, RaffleDTO } from '../interfaces/raffle.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -28,7 +27,7 @@ export class RafflesService {
 
   }
 
-  createRecord(record: Raffle): Observable<Raffle> {
+  createRecord(record: RaffleDTO): Observable<Raffle> {
     return this.http.post<Raffle>(`${this.API_URL}`, record)
   }
 
@@ -44,7 +43,7 @@ export class RafflesService {
     return this.http.get<Raffle[]>(`${this.API_URL}/${recordId}`)
   }
 
-  updateRecord(recordId: number, record: Raffle): Observable<Raffle> {
+  updateRecord(recordId: number, record: RaffleDTO): Observable<Raffle> {
     return this.http.put<Raffle>(`${this.API_URL}/${recordId}`, record)
   }
 
@@ -69,11 +68,13 @@ export class RafflesService {
       )
   }
 
-  uploadImage(recordId: number, image: File): Observable<Raffle> {
+  uploadImage(container: string, file: File): Observable<{originalUrl: string; thumbnailUrl: string;}> {
     const formData = new FormData();
 
-    formData.append('image', image);
-    return this.http.put<Raffle>(`${this.API_URL}/uploadProductImage/${recordId}`, formData)
+    formData.append('file', file);
+    formData.append('container', container);
+    
+    return this.http.post<{originalUrl: string; thumbnailUrl: string;}>(`${environment.API_URL}/images/upload`, formData)
   }
 
 }

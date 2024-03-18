@@ -10,6 +10,8 @@ import { FormRaffleStatusComponent } from './components/raffle-status/form/form.
 import { GridViewComponent } from './components/raffles/grid-view/grid-view.component';
 import { ListViewComponent } from './components/raffles/list-view/list-view.component';
 import { DetailComponent } from './components/raffles/detail/detail.component';
+import { ImgUploadComponent } from './components/raffles/img-upload/img-upload.component';
+import { FormComponent } from './components/raffles/form/form.component';
 
 
 @NgModule({
@@ -20,7 +22,9 @@ import { DetailComponent } from './components/raffles/detail/detail.component';
     FormRaffleStatusComponent,
     GridViewComponent,
     ListViewComponent,
-    DetailComponent
+    DetailComponent,
+    ImgUploadComponent,
+    FormComponent
   ],
   imports: [
     CommonModule,
