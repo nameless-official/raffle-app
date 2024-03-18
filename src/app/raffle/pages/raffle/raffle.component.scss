@@ -1,7 +1,10 @@
 /* participar-en-sorteo.component.css */
 .raffle-details {
   max-width: 600px;
-  margin: 0 auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  margin-left: auto;
+  margin-right: auto;
   padding: 20px;
   background-color: #f9f9f9;
   border-radius: 10px;
@@ -19,7 +22,7 @@
 
 .header h2 {
   font-size: 24px;
-  color: #673AB7;
+  color: #673ab7;
   margin-top: 10px;
 }
 
@@ -44,7 +47,7 @@
 
 .prizes h3 {
   font-size: 20px;
-  color: #673AB7;
+  color: #673ab7;
   margin-bottom: 10px;
 }
 
@@ -70,7 +73,6 @@
   margin: 10px;
 }
 
-
 .prize-details {
   flex-grow: 1;
   text-align: start;
@@ -83,20 +85,20 @@
 }
 
 .prize.selected {
-  background-color: #673AB7;
+  background-color: #673ab7;
   color: #fff;
 }
 
 .prize.selected:hover {
-  background-color: #512DA8;
+  background-color: #512da8;
   transform: translateY(-5px);
 }
 
 .participate-button {
   display: block;
   margin: 0 auto;
-  background-color: #673AB7;
-  color: #FFFFFF;
+  background-color: #673ab7;
+  color: #ffffff;
   border: none;
   padding: 15px 30px;
   font-size: 20px;
@@ -106,9 +108,8 @@
 }
 
 .participate-button:hover {
-  background-color: #512DA8; /* Color más oscuro al pasar el mouse */
+  background-color: #512da8; /* Color más oscuro al pasar el mouse */
 }
-
 
 .prize {
   position: relative;
@@ -124,7 +125,7 @@
 .ribbon {
   width: 100px;
   height: 100%;
-  background-color: #512DA8;
+  background-color: #512da8;
   color: #fff;
   text-align: center;
   white-space: nowrap;
