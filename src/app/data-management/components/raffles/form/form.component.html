@@ -1,0 +1,112 @@
+<form [formGroup]="formData" (ngSubmit)="onSubmit()" class="mt-3">
+    <div class="flex gap-3 flex-column">
+        <div class="grid row-gap-3">
+            <div class="sm:col-12 md:col-12 lg:col-2 xl:col-2">
+                <div class="flex justify-content-center">
+                    <div class="container-img-upload">
+                        <app-img-upload imageAlt="Producto" [selectedImage]="dataRecord.image_url"
+                            (selectedImageFile)="onSelectedImageFile($event)"></app-img-upload>
+                    </div>
+                </div>
+            </div>
+            <div class="sm:col-12 md:col-12 lg:col-10 xl:col-10">
+                <div class="mt-2">
+                    <div class="p-inputgroup">
+                        <span class="p-inputgroup-addon">
+                            <i class="pi pi-box"></i>
+                        </span>
+                        <span class="p-float-label">
+                            <input pInputText formControlName="name" autocomplete="off" id="name" />
+                            <label htmlFor="name">Nombre</label>
+                        </span>
+                    </div>
+                    <small *ngIf="verifyValidatedField('name')" class="p-error">{{
+                        this.getMessageErrorByField("name")
+                        }}</small>
+                </div>
+                <div class="mt-4" *ngIf="this.dataRecord.raffle_id">
+                    <div class="p-inputgroup">
+                        <span class="p-inputgroup-addon">
+                            <i class="pi pi-angle-double-down"></i>
+                        </span>
+                        <span class="p-float-label">
+                            <input pInputText formControlName="slug" autocomplete="off" id="slug" />
+                            <label htmlFor="slug">SLUG</label>
+                        </span>
+                    </div>
+                    <small *ngIf="verifyValidatedField('slug')" class="p-error">{{
+                        this.getMessageErrorByField("slug")
+                        }}</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid row-gap-3">
+            <div class="sm:col-12 md:col-12 lg:col-6 xl:col-6">
+                <div class="p-inputgroup">
+                    <span class="p-inputgroup-addon">
+                        <i class="pi pi-calendar"></i>
+                    </span>
+                    <span class="p-float-label">
+                        <p-calendar formControlName="start_date" dateFormat="dd/mm/yy"
+                            id="start_date"  appendTo="body"></p-calendar>
+                        <label htmlFor="start_date">Fecha de inicio</label>
+                    </span>
+                </div>
+                <small *ngIf="verifyValidatedField('start_date')" class="p-error">{{
+                    this.getMessageErrorByField("start_date") }}</small>
+            </div>
+
+            <div class="sm:col-12 md:col-12 lg:col-6 xl:col-6">
+                <div class="p-inputgroup">
+                    <span class="p-inputgroup-addon">
+                        <i class="pi pi-calendar"></i>
+                    </span>
+                    <span class="p-float-label">
+                        <p-calendar formControlName="end_date" dateFormat="dd/mm/yy"
+                            id="end_date"  appendTo="body"></p-calendar>
+                        <label htmlFor="end_date">Fecha de fin</label>
+                    </span>
+                </div>
+                <small *ngIf="verifyValidatedField('end_date')" class="p-error">{{
+                    this.getMessageErrorByField("end_date") }}</small>
+            </div>
+        </div>
+
+        <div class="mt-2">
+            <div class="formGroup">
+                <span class="p-float-label">
+                    <p-dropdown #raffleStatusDropdown formControlName="raffleStatus" [options]="raffleStatus()"
+                        optionLabel="name" dataKey="raffle_status_id"
+                        placeholder="Seleccione el estado del Sorteo" [showClear]="true" [filter]="true"
+                        dropdownIcon="pi pi-th-large" filterBy="name" appendTo="body"
+                        id="raffleStatus"></p-dropdown>
+                    <label htmlFor="raffleStatus">Estado del sorteo</label>
+                </span>
+            </div>
+            <small *ngIf="verifyValidatedField('raffleStatus')" class="p-error">{{
+                this.getMessageErrorByField("raffleStatus")
+                }}</small>
+        </div>
+        <div class="mt-2">
+            <div class="p-inputgroup">
+                <span class="p-float-label">
+                  <textarea
+                    rows="5"
+                    cols="30"
+                    pInputTextarea
+                    formControlName="description"
+                    id="description"
+                  ></textarea>
+                  <label htmlFor="description">Descripción</label>
+                </span>
+              </div>
+            <small *ngIf="verifyValidatedField('description')" class="p-error">{{
+                this.getMessageErrorByField("description")
+                }}</small>
+        </div>
+        <div class="p-inputgroup flex justify-content-end">
+            <button type="submit" pButton [label]="this.textButton()"></button>
+        </div>
+    </div>
+</form>

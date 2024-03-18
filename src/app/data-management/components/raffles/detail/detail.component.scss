@@ -1,0 +1,71 @@
+/* _variables.scss */
+
+$primary-color: #512DA8;
+$secondary-color: #E040FB;
+$text-color: #333;
+$background-color: #f9f9f9;
+
+
+.raffle-container {
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+
+  .raffle-header {
+    h1 {
+      color: $primary-color;
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: $text-color;
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+
+    .raffle-status {
+      font-weight: bold;
+    }
+  }
+
+  .raffle-info {
+    margin-top: 2em;
+    p {
+      color: $text-color;
+      font-size: 16px;
+      margin-bottom: 10px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .raffle-image {
+    margin-top: 20px;
+    img {
+      max-width: 100%;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  .finished-status {
+    background-color: $secondary-color;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: inline-block;
+    margin-top: 10px; /* Espacio adicional entre el estado y el contenido */
+  }
+
+  .status-name{
+    padding: 5px;
+    background: orange;
+    color: white;
+    border-radius: 10px;
+    margin: 10px;
+  }
+}

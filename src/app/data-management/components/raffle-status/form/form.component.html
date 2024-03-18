@@ -1,0 +1,66 @@
+<form [formGroup]="formData" (ngSubmit)="onSubmit()">
+    <div class="flex gap-3 flex-column">
+      <div>
+        <div class="p-inputgroup">
+          <span class="p-inputgroup-addon">
+            <i class="pi pi-th-large"></i>
+          </span>
+          <input
+            pInputText
+            placeholder="Código"
+            formControlName="code"
+            autocomplete="off"
+          />
+        </div>
+        <small *ngIf="verifyValidatedField('code')" class="p-error">{{
+          this.getMessageErrorByField("code")
+        }}</small>
+      </div>
+      <div>
+        <div class="p-inputgroup">
+          <span class="p-inputgroup-addon">
+            <i class="pi pi-th-large"></i>
+          </span>
+          <input
+            pInputText
+            placeholder="Nombre"
+            formControlName="name"
+            autocomplete="off"
+          />
+        </div>
+        <small *ngIf="verifyValidatedField('name')" class="p-error">{{
+          this.getMessageErrorByField("name")
+        }}</small>
+      </div>
+      <div>
+        <div class="p-inputgroup">
+          <span class="p-inputgroup-addon">
+            <i class="pi pi-th-large"></i>
+          </span>
+          <p-inputNumber
+              placeholder="Orden"
+              formControlName="sort"
+              [showButtons]="true"
+            ></p-inputNumber>
+        </div>
+        <small *ngIf="verifyValidatedField('sort')" class="p-error">{{
+          this.getMessageErrorByField("sort")
+        }}</small>
+      </div>
+      <div>
+        <div class="p-inputgroup">
+            <p-checkbox
+            formControlName="is_finished"
+            label="¿Está finalizado?"
+            [binary]="true"
+          ></p-checkbox>
+        </div>
+        <small *ngIf="verifyValidatedField('is_finished')" class="p-error">{{
+          this.getMessageErrorByField("is_finished")
+        }}</small>
+      </div>
+      <div class="p-inputgroup flex justify-content-end">
+        <button type="submit" pButton [label]="this.textButton()"></button>
+      </div>
+    </div>
+  </form>

@@ -1,0 +1,52 @@
+<form [formGroup]="formData" (ngSubmit)="onSubmit()">
+  <div class="flex gap-3 flex-column">
+    <div>
+      <span class="show-picture-discord">
+        <i class="pi pi-info-circle show-picture-discord" (click)="op.toggle($event)"></i>
+      </span>
+    </div>
+    <div>
+      <div class="p-inputgroup">
+        <span class="p-inputgroup-addon">
+          <i class="pi pi-discord"></i>
+        </span>
+        <input pInputText placeholder="Identificador de discord" formControlName="discord_user_id" autocomplete="off" />
+      </div>
+      <small *ngIf="verifyValidatedField('discord_user_id')" class="p-error">{{
+        this.getMessageErrorByField("discord_user_id")
+        }}</small>
+    </div>
+    <div>
+      <div class="p-inputgroup">
+        <span class="p-inputgroup-addon">
+          <i class="pi pi-discord"></i>
+        </span>
+        <input pInputText placeholder="Nombre" formControlName="name" autocomplete="off" />
+      </div>
+      <small *ngIf="verifyValidatedField('name')" class="p-error">{{
+        this.getMessageErrorByField("name")
+        }}</small>
+    </div>
+    <div>
+      <div class="p-inputgroup">
+        <span class="p-inputgroup-addon">
+          <i class="pi pi-discord"></i>
+        </span>
+        <input pInputText placeholder="Correo electrónico" formControlName="email" autocomplete="off" />
+      </div>
+      <small *ngIf="verifyValidatedField('email')" class="p-error">{{
+        this.getMessageErrorByField("email")
+        }}</small>
+    </div>
+    <div class="p-inputgroup flex justify-content-end">
+      <button type="submit" pButton [label]="this.textButton()"></button>
+    </div>
+  </div>
+</form>
+
+
+
+
+<p-overlayPanel #op>
+    <img src="./../../../../../assets/devtalles-branding/discord-id.png" alt="discord" class="discord-image" height="350px"/>
+</p-overlayPanel>

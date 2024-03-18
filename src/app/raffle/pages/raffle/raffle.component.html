@@ -1,0 +1,93 @@
+<p-toast
+  [breakpoints]="{ '920px': { width: '100%', right: '0', left: '0' } }"
+></p-toast>
+
+<!-- participar-en-sorteo.component.html -->
+<div class="raffle-details" *ngIf="!this.isLoading()">
+  <div class="header">
+    <img
+      [src]="getImagePath(raffle.image_url || '')"
+      height="150rem"
+      alt="Logo del sorteo"
+    />
+    <h2>{{ raffle.name }}</h2>
+  </div>
+  <div class="info">
+    <img
+      src="./../../../../assets/layout/images/logo-black.png"
+      height="50rem"
+      alt="Imagen del sorteo"
+    />
+    <p>{{ raffle.description }}</p>
+    <p>
+      <strong>Fecha de inicio:</strong>
+      {{ raffle.start_date | date : "dd/MM/yyyy" }}
+    </p>
+    <p>
+      <strong>Fecha de fin:</strong> {{ raffle.end_date | date : "dd/MM/yyyy" }}
+    </p>
+    <div class="prizes" *ngIf="!raffle.raffleStatus.is_finished">
+      <h3>Premios</h3>
+      <ul>
+        <li *ngFor="let prize of raffle.prizes">
+          <div class="prize">
+            <img
+              src="./../../../../assets/devtalles-branding/gift-devi-3.png"
+              alt="{{ prize.name }}"
+            />
+            <div class="prize-details">
+              <strong>{{ prize.name }}</strong>
+              <p>{{ prize.description }}</p>
+              <p>Cantidad {{ prize.quantity }}</p>
+            </div>
+            <div class="prize-label">
+              <div class="ribbon">
+                <p class="ribbon-text">
+                  {{ prize.prizeLevel.name }}
+                </p>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="prizes" *ngIf="raffle.raffleStatus.is_finished">
+      <h3>Ganadores</h3>
+      <ul>
+        <li *ngFor="let winner of winners">
+          <div class="prize">
+            <img src="{{ winner.prize.image_thumbnail_url }}" alt="" />
+            <div class="prize-details">
+              <strong>{{ winner.name }}</strong>
+              <p>{{ winner.email }}</p>
+              <p>Cantidad {{ winner.prize.name }}</p>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <button
+    class="participate-button"
+    (click)="participate()"
+    *ngIf="!raffle.raffleStatus.is_finished"
+  >
+    ¡Participar en el Sorteo!
+  </button>
+</div>
+
+<p-dialog
+  [visible]="showForm()"
+  [style]="{ width: '450px' }"
+  header="Participar en el sorteo"
+  [modal]="true"
+  class="p-fluid"
+  (onDragEnd)="onDragEnd()"
+>
+  <app-participation-form
+    *ngIf="showForm()"
+    [raffleId]="this.raffle.raffle_id"
+    (acceptedRequest)="processResponseCreate($event)"
+  ></app-participation-form>
+</p-dialog>

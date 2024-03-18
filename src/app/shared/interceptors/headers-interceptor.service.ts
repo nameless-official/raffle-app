@@ -24,7 +24,8 @@ export class HeadersInterceptor implements HttpInterceptor {
     })
 
     return next.handle(newRequest).pipe(
-      catchError(({ error }: HttpErrorResponse) => {
+      catchError(({ error, status }: HttpErrorResponse) => {
+        if(status !== 401 && status !== 0) 
         this.messageService.add({
           severity: 'error',
           summary: error.error,

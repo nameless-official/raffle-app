@@ -27,7 +27,7 @@ export class LoginComponent {
   login(): void {
     const { username, password } = this.formData.value
     this.authService.login(username, btoa(password)).subscribe({
-      next: () => this.router.navigateByUrl('/'),
+      next: () => this.router.navigateByUrl('/admin'),
     })
   }
 

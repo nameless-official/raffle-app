@@ -1,0 +1,6 @@
+<app-list-raffles *ngIf="raffles().length > 0 && !this.isLoading()" [raffles]="raffles()"></app-list-raffles>
+<app-not-raffles *ngIf="raffles().length === 0 && !this.isLoading()"></app-not-raffles>
+
+<div class="loading-container" *ngIf="this.isLoading()">
+    <div class="loading-spinner"></div>
+</div>

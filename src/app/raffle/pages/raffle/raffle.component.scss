@@ -1,0 +1,146 @@
+/* participar-en-sorteo.component.css */
+.raffle-details {
+  max-width: 600px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.header img {
+  max-width: 200px;
+}
+
+.header h2 {
+  font-size: 24px;
+  color: #673ab7;
+  margin-top: 10px;
+}
+
+.info {
+  text-align: center;
+}
+
+.info img {
+  max-width: 100%;
+  margin-bottom: 20px;
+}
+
+.info p {
+  font-size: 18px;
+  color: #333333;
+  margin-bottom: 10px;
+}
+
+.prizes {
+  margin-top: 20px;
+}
+
+.prizes h3 {
+  font-size: 20px;
+  color: #673ab7;
+  margin-bottom: 10px;
+}
+
+.prizes ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.prizes li {
+  margin-bottom: 20px;
+}
+
+.prize {
+  display: flex;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.prize img {
+  max-width: 100px;
+  max-height: 100px;
+  margin-right: 20px;
+  margin: 10px;
+}
+
+.prize-details {
+  flex-grow: 1;
+  text-align: start;
+  margin: 10px;
+}
+
+.prize:hover {
+  background-color: #f0f0f0;
+  transform: translateY(-5px);
+}
+
+.prize.selected {
+  background-color: #673ab7;
+  color: #fff;
+}
+
+.prize.selected:hover {
+  background-color: #512da8;
+  transform: translateY(-5px);
+}
+
+.participate-button {
+  display: block;
+  margin: 0 auto;
+  background-color: #673ab7;
+  color: #ffffff;
+  border: none;
+  padding: 15px 30px;
+  font-size: 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.participate-button:hover {
+  background-color: #512da8; /* Color más oscuro al pasar el mouse */
+}
+
+.prize {
+  position: relative;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.prize-label {
+  top: 10px;
+  right: 10px;
+}
+
+.ribbon {
+  width: 100px;
+  height: 100%;
+  background-color: #512da8;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  padding: 10px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ribbon-text {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+  white-space: nowrap;
+  color: white !important;
+}
