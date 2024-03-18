@@ -10,6 +10,7 @@ import { FormRaffleStatusComponent } from './components/raffle-status/form/form.
 import { GridViewComponent } from './components/raffles/grid-view/grid-view.component';
 import { ListViewComponent } from './components/raffles/list-view/list-view.component';
 import { DetailComponent } from './components/raffles/detail/detail.component';
+import { RaffleDataComponent } from './pages/raffle-data/raffle-data.component';
 import { ImgUploadComponent } from './components/raffles/img-upload/img-upload.component';
 import { FormRaffleComponent } from './components/raffles/form/form.component';
 import { PrizeLevelsComponent } from './pages/prize-levels/prize-levels.component';
@@ -18,7 +19,6 @@ import { ListViewPrizeComponent } from './components/prizes/list-view/list-view.
 import { GridViewPrizeComponent } from './components/prizes/grid-view/grid-view.component';
 import { PrizesComponent } from './pages/prizes/prizes.component';
 import { FormPrizeComponent } from './components/prizes/form/form.component';
-
 
 @NgModule({
   declarations: [
@@ -29,6 +29,7 @@ import { FormPrizeComponent } from './components/prizes/form/form.component';
     GridViewComponent,
     ListViewComponent,
     DetailComponent,
+    RaffleDataComponent,
     ImgUploadComponent,
     FormRaffleComponent,
     PrizeLevelsComponent,
@@ -38,10 +39,6 @@ import { FormPrizeComponent } from './components/prizes/form/form.component';
     PrizesComponent,
     FormPrizeComponent
   ],
-  imports: [
-    CommonModule,
-    DataManagementRoutingModule,
-    SharedModule
-  ]
+  imports: [CommonModule, DataManagementRoutingModule, SharedModule],
 })
-export class DataManagementModule { }
+export class DataManagementModule {}
