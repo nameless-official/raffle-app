@@ -40,6 +40,7 @@ export class AppComponent implements OnInit {
           filter(event => event instanceof NavigationEnd)
         ).subscribe((event: NavigationEnd) => {
           const url: string = event.url
+          
           if(url.includes('admin')) this.router.navigateByUrl('/auth/login')
         });
         break

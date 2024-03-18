@@ -18,6 +18,8 @@ export class ParticipationFormComponent {
 
   protected formData: FormGroup = this.formBuilder.group({
     discord_user_id: [, [Validators.required]],
+    name: [, [Validators.required]],
+    email: [, [Validators.required, Validators.email]],
   })
 
   protected textButton = signal<string>('Participar')
@@ -33,6 +35,8 @@ export class ParticipationFormComponent {
     const newDataRequest: any = {
       raffle_id: this.raffleId,
       discord_user_id: dataOfForm.discord_user_id,
+      name: dataOfForm.name,
+      email: dataOfForm.email,
     }
 
     if (this.formData.invalid) {

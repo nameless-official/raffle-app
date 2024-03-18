@@ -13,7 +13,7 @@ export class ParticipantService {
 
   constructor() { }
 
-  createParticipationRequest(record: {raffle_id: number; discord_user_id: string}): Observable<any> {
+  createParticipationRequest(record: {raffle_id: number; discord_user_id: string; name: string; email: string}): Observable<any> {
     return this.http.post<any>(`${this.API_URL}`, record)
   }
 

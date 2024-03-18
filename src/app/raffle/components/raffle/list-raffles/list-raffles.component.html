@@ -7,8 +7,8 @@
         <div class="details">
             <h2>{{ raffle.name }}</h2>
             <p>{{ raffle.description }}</p>
-            <p><strong>Fecha de inicio:</strong> {{ raffle.start_date }}</p>
-            <p><strong>Fecha de fin:</strong> {{ raffle.end_date }}</p>
+            <p><strong>Fecha de inicio:</strong> {{ raffle.start_date | date: 'dd/MM/yyyy' }}</p>
+            <p><strong>Fecha de fin:</strong> {{ raffle.end_date | date: 'dd/MM/yyyy' }}</p>
             <a [routerLink]="['/raffles', raffle.slug]">Ver detalles</a>
         </div>
     </div>
