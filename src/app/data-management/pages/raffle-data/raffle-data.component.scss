@@ -1,0 +1,125 @@
+.product-badge {
+    border-radius: var(--border-radius);
+    padding: 0.25em 0.5rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.3px;
+  
+    &.status-instock {
+      background: #c8e6c9;
+      color: #256029;
+    }
+  
+    &.status-outofstock {
+      background: #ffcdd2;
+      color: #c63737;
+    }
+  
+    &.status-lowstock {
+      background: #feedaf;
+      color: #8a5340;
+    }
+  }
+
+  $loading-color: #673AB7;
+
+.loading-container {
+  position: fixed; /* Cambiado a fixed */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999; /* Asegura que esté por encima de otros elementos */
+}
+
+.loading-spinner {
+  border: 4px solid rgba($loading-color, 0.3);
+  border-radius: 50%;
+  border-top: 4px solid $loading-color;
+  width: 64px;
+  height: 64px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* _variables.scss */
+
+$primary-color: #512DA8;
+$secondary-color: #E040FB;
+$text-color: #333;
+$background-color: #f9f9f9;
+
+
+.raffle-container {
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+
+  .raffle-header {
+    h1 {
+      color: $primary-color;
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: $text-color;
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+
+    .raffle-status {
+      font-weight: bold;
+    }
+  }
+
+  .raffle-info {
+    margin-top: 2em;
+    p {
+      color: $text-color;
+      font-size: 16px;
+      margin-bottom: 10px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .raffle-image {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    img {
+      max-width: 100%;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  .finished-status {
+    background-color: $secondary-color;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: inline-block;
+    margin-top: 10px; /* Espacio adicional entre el estado y el contenido */
+  }
+
+  .status-name{
+    padding: 5px;
+    background: orange;
+    color: white;
+    border-radius: 10px;
+    margin: 10px;
+  }
+}

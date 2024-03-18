@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { DataManagementLayoutComponent } from './layout/data-management-layout/data-management-layout.component';
 import { RafflesComponent } from './pages/raffles/raffles.component';
 import { RaffleStatusComponent } from './pages/raffle-status/raffle-status.component';
+import { RaffleDataComponent } from './pages/raffle-data/raffle-data.component';
 
 const routes: Routes = [
   {
@@ -11,23 +12,26 @@ const routes: Routes = [
     children: [
       {
         path: 'raffles',
-        component: RafflesComponent
+        component: RafflesComponent,
       },
       {
         path: 'raffles-status',
-        component: RaffleStatusComponent
+        component: RaffleStatusComponent,
+      },
+      {
+        path: 'raffle-data/:slug',
+        component: RaffleDataComponent,
       },
       {
         path: '**',
-        redirectTo: '/notfound'
-      }
-    ]
+        redirectTo: '/notfound',
+      },
+    ],
   },
-
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class DataManagementRoutingModule { }
+export class DataManagementRoutingModule {}

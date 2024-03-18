@@ -10,7 +10,7 @@ import { FormRaffleStatusComponent } from './components/raffle-status/form/form.
 import { GridViewComponent } from './components/raffles/grid-view/grid-view.component';
 import { ListViewComponent } from './components/raffles/list-view/list-view.component';
 import { DetailComponent } from './components/raffles/detail/detail.component';
-
+import { RaffleDataComponent } from './pages/raffle-data/raffle-data.component';
 
 @NgModule({
   declarations: [
@@ -20,12 +20,9 @@ import { DetailComponent } from './components/raffles/detail/detail.component';
     FormRaffleStatusComponent,
     GridViewComponent,
     ListViewComponent,
-    DetailComponent
+    DetailComponent,
+    RaffleDataComponent,
   ],
-  imports: [
-    CommonModule,
-    DataManagementRoutingModule,
-    SharedModule
-  ]
+  imports: [CommonModule, DataManagementRoutingModule, SharedModule],
 })
-export class DataManagementModule { }
+export class DataManagementModule {}
