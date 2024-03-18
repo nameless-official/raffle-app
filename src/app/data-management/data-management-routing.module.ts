@@ -4,6 +4,7 @@ import { DataManagementLayoutComponent } from './layout/data-management-layout/d
 import { RafflesComponent } from './pages/raffles/raffles.component';
 import { RaffleStatusComponent } from './pages/raffle-status/raffle-status.component';
 import { RaffleDataComponent } from './pages/raffle-data/raffle-data.component';
+import { PrizeLevelsComponent } from './pages/prize-levels/prize-levels.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
       {
         path: 'raffle-data/:slug',
         component: RaffleDataComponent,
+      },
+      {
+        path: 'prize-levels',
+        component: PrizeLevelsComponent,
       },
       {
         path: '**',

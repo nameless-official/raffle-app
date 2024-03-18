@@ -14,7 +14,7 @@ export interface Raffle {
 
 
 
-export interface RaffleCreateDTO {
+export interface RaffleDTO {
     name: string
     start_date: string | Date
     end_date: string | Date
@@ -22,5 +22,5 @@ export interface RaffleCreateDTO {
     slug: string
     image_url?: string
     image_thumbnail_url?: string
-    raffle_status_id: number
+    raffle_status_id?: number
 }

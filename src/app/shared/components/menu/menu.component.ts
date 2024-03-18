@@ -23,6 +23,9 @@ export class MenuComponent implements OnInit {
             label: 'Estados de Sorteos', icon: 'pi pi-fw pi-th-large', routerLink: ['/admin/data-management/raffles-status'],
           },
           {
+            label: 'Niveles de premios', icon: 'pi pi-fw pi-th-large', routerLink: ['/admin/data-management/prize-levels'],
+          },
+          {
             label: 'Sorteos', icon: 'pi pi-fw pi-th-large', routerLink: ['/admin/data-management/raffles'],
           },
         ]

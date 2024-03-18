@@ -11,6 +11,10 @@ import { GridViewComponent } from './components/raffles/grid-view/grid-view.comp
 import { ListViewComponent } from './components/raffles/list-view/list-view.component';
 import { DetailComponent } from './components/raffles/detail/detail.component';
 import { RaffleDataComponent } from './pages/raffle-data/raffle-data.component';
+import { ImgUploadComponent } from './components/raffles/img-upload/img-upload.component';
+import { FormRaffleComponent } from './components/raffles/form/form.component';
+import { PrizeLevelsComponent } from './pages/prize-levels/prize-levels.component';
+import { FormPrizeLevelComponent } from './components/prize-levels/form/form.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +26,10 @@ import { RaffleDataComponent } from './pages/raffle-data/raffle-data.component';
     ListViewComponent,
     DetailComponent,
     RaffleDataComponent,
+    ImgUploadComponent,
+    FormRaffleComponent,
+    PrizeLevelsComponent,
+    FormPrizeLevelComponent,
   ],
   imports: [CommonModule, DataManagementRoutingModule, SharedModule],
 })

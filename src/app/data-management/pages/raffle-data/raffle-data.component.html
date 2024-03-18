@@ -16,8 +16,14 @@
     <p class="text-center">{{ raffle.description }}</p>
   </div>
   <div class="raffle-info">
-    <p><strong>Fecha de inicio: </strong> {{ raffle.start_date }}</p>
-    <p><strong>Fecha de fin: </strong> {{ raffle.end_date }}</p>
+    <p>
+      <strong>Fecha de inicio: </strong>
+      {{ raffle.start_date | date : "dd/MM/yyyy" }}
+    </p>
+    <p>
+      <strong>Fecha de fin: </strong>
+      {{ raffle.end_date | date : "dd/MM/yyyy" }}
+    </p>
   </div>
   <div class="raffle-image">
     <img
